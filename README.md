@@ -19,7 +19,7 @@ This extension allows you to easily change the auto-scroll speed and
 save it in three different modes; slow, medium and fast. A single
 click will stop the auto-scrolling.
 
-### 3. Installing
+### 4. Installing
 
 **Option 1** just install it from the [chrome web store](https://chrome.google.com/webstore/detail/dccjkemhmffnljlnnoffljpkhkfpldff)
 
@@ -31,6 +31,6 @@ click will stop the auto-scrolling.
 * click "Load unpacked extension",
 * select the `extension` folder in this repo.
 
-### 4. Compatibility
+### 5. Compatibility
 
 It works on all Chrome distribution channels: Stable, Beta and Dev.

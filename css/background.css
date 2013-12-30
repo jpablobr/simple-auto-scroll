@@ -96,3 +96,9 @@ textarea {
 #donation {
   padding: 5px 10px;
 }
+
+#footer {
+  float: right;
+  overflow: hidden;
+  padding: 5px 20px;
+}

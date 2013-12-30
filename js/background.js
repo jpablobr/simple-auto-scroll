@@ -22,18 +22,19 @@
 
  */
 
+
 function slowLabel(tab) {
-  chrome.browserAction.setBadgeBackgroundColor({color: [0,255,255,255]});
+  chrome.browserAction.setBadgeBackgroundColor({color: [0,180,255,255]});
   doScroll(tab, (localStorage["slow"] || "100"), 'slow');
 };
 
 function mediumLabel(tab) {
-  chrome.browserAction.setBadgeBackgroundColor({color: [0,255,0,255]});
+  chrome.browserAction.setBadgeBackgroundColor({color: [0,125,255,255]});
   doScroll(tab, (localStorage["medium"] || "40"), 'medium');
 };
 
 function fastLabel(tab) {
-  chrome.browserAction.setBadgeBackgroundColor({color: [0,21,183,32]});
+  chrome.browserAction.setBadgeBackgroundColor({color: [0, 55, 255, 255]});
   doScroll(tab, (localStorage["fast"] || "1"), 'fast');
 };
 
@@ -67,18 +68,14 @@ document.addEventListener('DOMContentLoaded',  function(e) {
       }
       chrome.tabs.create({url:'http://github.com/jpablobr/simple-auto-scroll'});
     });
-
     localStorage["version"] = chrome.extension.getVersion();
-    chrome.browserAction.setBadgeText({text:"new!"});
-    chrome.browserAction.setBadgeBackgroundColor({color:[0,255,255, 255]});
-
   }
 }, false);
 
-var counter = 0;
+var scrollbar = 0;
 var wN2scRl;
 
-function doStop(tab) {
+function resetScroll(tab) {
   chrome.browserAction.setBadgeText({text:""});
   var upUrl = "javascript:var wN2scRl;Sa5gNA9k=new Function('clearTimeout(wN2scRl)');document.onkeydown=Sa5gNA9k;Sa5gNA9k();void(wN2scRl=setInterval('if(pageYOffset<document.height-innerHeight){window.scrollBy(0,0)}else{Sa5gNA9k()}',0))";
   if(upUrl != tab.url) {
@@ -98,12 +95,12 @@ function upurl(id){
 }
 
 chrome.extension.onRequest.addListener(function(request, sender, sendResponse) {
-  if(counter != 0){
+  if(scrollbar != 0){
     chrome.tabs.getSelected(null, function(tab){
       clearInterval(wN2scRl);
-      doStop(tab);
+      resetScroll(tab);
     });
-    counter = 0;
+    scrollbar = 0;
   }
   sendResponse();
 });
@@ -111,23 +108,23 @@ chrome.extension.onRequest.addListener(function(request, sender, sendResponse) {
 chrome.browserAction.onClicked.addListener(function(tab) {
   clearInterval(wN2scRl);
 
-  if(counter == 0) {
-    counter +=1;
+  if(scrollbar == 0) {
+    scrollbar +=1;
     slowLabel(tab);
-  } else if(counter == 1) {
-    counter +=1;
+  } else if(scrollbar == 1) {
+    scrollbar +=1;
     mediumLabel(tab);
-  } else if(counter == 2) {
-    counter +=1;
+  } else if(scrollbar == 2) {
+    scrollbar +=1;
     fastLabel(tab);
-  } else if(counter == 3) {
-    counter = 0;
-    doStop(tab);
+  } else if(scrollbar == 3) {
+    scrollbar = 0;
+    resetScroll(tab);
   }
 });
 
 chrome.tabs.onSelectionChanged.addListener(function(tabid, selectinfo) {
   clearInterval(wN2scRl);
   chrome.browserAction.setBadgeText({text:""});
-  counter=0;
+  scrollbar=0;
 });
