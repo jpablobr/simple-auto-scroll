@@ -91,7 +91,7 @@ function doScroll(tab, speed, badge) {
 }
 
 function upurl(id){
-  chrome.tabs.update(id, {'url': 'javascript:document.body.scrollTop+=1;'});
+  chrome.tabs.update(id, {'url': 'javascript:document.documentElement.scrollTop+=1;'});
 }
 
 chrome.extension.onRequest.addListener(function(request, sender, sendResponse) {
