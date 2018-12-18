@@ -58,7 +58,7 @@ document.addEventListener('DOMContentLoaded',  function(e) {
   var new_ver = (chrome.extension.getVersion() + "").split(".");
 
   if(old_ver[0]+'.'+old_ver[1]+'.'+old_ver[2] != new_ver[0]+'.'+new_ver[1]+'.'+new_ver[2]){
-    chrome.tabs.getAllInWindow(undefined, function(tabs) {
+    chrome.tabs.query({}, function(tabs) {
       for (var i = 0, tab; tab = tabs[i]; i++) {
 	var str = tab.url;
 	if (str.match('http://github.com/jpablobr/simple-auto-scroll')) {
