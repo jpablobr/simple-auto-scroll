@@ -79,7 +79,9 @@ function resetScroll(tab) {
   chrome.browserAction.setBadgeText({text:""});
   var upUrl = "javascript:var wN2scRl;Sa5gNA9k=new Function('clearTimeout(wN2scRl)');document.onkeydown=Sa5gNA9k;Sa5gNA9k();void(wN2scRl=setInterval('if(pageYOffset<document.height-innerHeight){window.scrollBy(0,0)}else{Sa5gNA9k()}',0))";
   if(upUrl != tab.url) {
-    chrome.tabs.update(tab.id, {'url': upUrl});
+    chrome.tabs.executeScript({
+      code: upUrl
+    });
   }
 }
 
@@ -91,7 +93,9 @@ function doScroll(tab, speed, badge) {
 }
 
 function upurl(id){
-  chrome.tabs.update(id, {'url': 'javascript:document.documentElement.scrollTop+=1;'});
+  chrome.tabs.executeScript({
+    code: `document.documentElement.scrollTop+=1;`
+  });
 }
 
 chrome.extension.onRequest.addListener(function(request, sender, sendResponse) {
