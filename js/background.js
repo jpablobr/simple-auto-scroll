@@ -41,7 +41,7 @@ function fastLabel(tab) {
 chrome.extension.getVersion = function() {
   if (!chrome.extension.version_) {
     var xhr = new XMLHttpRequest();
-    xhr.open("GET", chrome.extension.getURL('manifest.json'), false);
+    xhr.open("GET", chrome.extension.getURL('manifest.json'), true);
     xhr.onreadystatechange = function() {
       if (this.readyState == 4) {
         var manifest = JSON.parse(this.responseText);
