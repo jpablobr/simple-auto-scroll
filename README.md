@@ -7,7 +7,7 @@ A speed-customizable auto-scroll Google Chrome extension.
 ### 2. Why?
 
 A lot of times I find myself reading long
-[texfiles](http://www.textfiles.com/), and after a while, I kind of
+[textfiles](http://www.textfiles.com/), and after a while, I kind of
 wish I could just read them as if they were a movie. I've tried with
 the mouse (middle click) thingy, but it's just not practical and
 adjusting the speed is very tricky - not to mention that a lot of
